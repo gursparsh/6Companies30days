@@ -1,0 +1,32 @@
+class Solution
+{
+    //Function to find a continuous sub-array which adds up to a given number.
+    static ArrayList<Integer> subarraySum(int[] arr, int n, int sum) 
+    {
+        // Your code here
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        int curr_sum, i, j;
+
+        // Pick a starting point
+        for (i = 0; i < n; i++) {
+            curr_sum = arr[i];
+
+            // try all subarrays starting with 'i'
+            for (j = i + 1; j <= n; j++) {
+                if (curr_sum == sum) {
+                    int p = j - 1;
+                    ans.add(i+1);
+                    ans.add(j);
+                    return ans;
+                }
+                if (curr_sum > sum || j == n)
+                    break;
+                curr_sum = curr_sum + arr[j];
+            }
+        }
+
+        ans.add(-1);
+        return ans;
+    }
+}
