@@ -1,0 +1,19 @@
+class Tree
+{
+    int count;
+    public int solution(Node root, int X){
+        if(root==null) return 0;
+        
+        int sum=root.data+solution(root.left,X)+solution(root.right,X);
+        if(sum==X) count++;
+        return sum;
+    }
+    //Function to count number of subtrees having sum equal to given sum.
+    int countSubtreesWithSumX(Node root, int X)
+    {
+	//Add your code here.
+	    count = 0;
+	    solution(root, X);
+	    return count;
+    }
+}
