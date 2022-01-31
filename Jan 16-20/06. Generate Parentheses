@@ -1,0 +1,23 @@
+class Solution {
+    
+    public static void solve(List<String> ans, int n, String s, int c1, int c2) {
+        if (c2 > c1) {
+            return;
+        }
+        if (s.length() == n * 2) {
+            if (c1 == c2) {
+                ans.add(s);
+            }
+            return;
+        }
+        solve(ans, n, s + '(', c1 + 1, c2);
+        solve(ans, n, s + ')', c1, c2 + 1);
+    }
+
+    public List<String> AllParenthesis(int n) {
+        // Write your code here
+        List<String> ans = new ArrayList<>();
+        solve(ans, n, "", 0, 0);
+        return ans;
+    }
+}
